@@ -8,7 +8,7 @@ listening on:
     /: Displays 'Hello HBNB!'
     /hbnb: Displays 'HBNB'
     /c/<text>: Displays 'C' followed by the value of <text>
-/python/(<text>): Displays 'Python' followed by the value of <text> 
+/python/(<text>): Displays 'Python' followed by the value of <text>
 Note: You must use the option strict_slashes=False in your route definition
 """
 
