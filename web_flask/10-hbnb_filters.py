@@ -20,7 +20,7 @@ Routes:
         Use 6-index.html content as source code for the template 10-hbnb_filters.html:
             Replace the content of the H4 tag under each filter title (H3 States and H3 Amenities) by &nbsp;
         State, City and Amenity objects must be loaded from DBStorage and sorted by name (A->Z)
-NOTE: You must use the option strict_slashes=False in your route definition
+Note: You must use the option strict_slashes=False in your route definition
 """
 
 from models import storage

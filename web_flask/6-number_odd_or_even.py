@@ -14,7 +14,7 @@ listening on:
         H1 tag: 'Number: n' inside the tag BODY
     /number_odd_or_even/<n>: Displays a HTML page only if <n> is an integer:
         H1 tag: 'Number: n is even|odd' inside the tag BODY
-NOTE: You must use the option strict_slashes=False in your route definition
+Note: You must use the option strict_slashes=False in your route definition
 """
 
 from flask import Flask, render_template

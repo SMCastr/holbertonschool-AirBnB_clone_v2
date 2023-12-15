@@ -25,7 +25,7 @@ Routes:
                 LI tag: description of one City: <city.id>: <B><city.name></B>
         Otherwise:
             H1 tag: “Not found!”
-NOTE: You must use the option strict_slashes=False in your route definition
+Note: You must use the option strict_slashes=False in your route definition
 """
 
 from models import storage

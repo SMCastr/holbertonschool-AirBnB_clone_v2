@@ -10,7 +10,7 @@ listening on:
     /c/<text>: Displays 'C' followed by the value of <text>
     /python/(<text>): Displays 'Python' followed by the value of <text>
     /number/<n>: Displays 'n is a number' only if <n> is an integer
-NOTE: You must use the option strict_slashes=False in your route definition
+Note: You must use the option strict_slashes=False in your route definition
 """
 
 from flask import Flask

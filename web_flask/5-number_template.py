@@ -12,7 +12,7 @@ listening on:
     /number/<n>: Displays 'n is a number' only if <n> is an integer
     /number_template/<n>: Displays an HTML page only if <n> is an integer:
         H1 tag: 'Number: n' inside the BODY tag
-NOTE: You must use the option strict_slashes=False in your route definition
+Note: You must use the option strict_slashes=False in your route definition
 """
 
 from flask import Flask, render_template

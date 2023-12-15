@@ -9,7 +9,7 @@ listening on:
     /hbnb: Displays 'HBNB'
     /c/<text>: Displays 'C' followed by the value of <text>
     /python/(<text>): Displays 'Python' followed by the value of <text>   
-NOTE: You must use the option strict_slashes=False in your route definition
+Note: You must use the option strict_slashes=False in your route definition
 """
 
 from flask import Flask
