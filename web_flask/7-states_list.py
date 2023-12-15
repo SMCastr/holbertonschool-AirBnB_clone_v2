@@ -5,15 +5,17 @@ Script that starts a Flask web application.
 The web application must be listening on:
     - Address: 0.0.0.0
     - Port: 5000
-Use storage for fetching data from the storage engine (FileStorage or DBStorage) => from models import storage and storage.all(...)
+Use storage for fetching data from the storage engine (FileStorage or DBStorage)
+=> from models import storage and storage.all(...)
 After each request you must remove the current SQLAlchemy Session:
     - Declare a method to handle @app.teardown_appcontext
     - Call in this method storage.close()
 Routes:
     - /states_list: display an HTML page: (inside the tag BODY)
         H1 tag: "States"
-        UL tag: with the list of all State objects present in DBStorage sorted by name (A->Z) tip
-            LI tag: description of one State: <state.id>: <B><state.name></B>
+        UL tag: with the list of all State objects present in DBStorage
+        sorted by name (A->Z) tip
+        LI tag: description of one State: <state.id>: <B><state.name></B>
 Note: You must use the option strict_slashes=False in your route definition
 """
 
@@ -39,7 +41,6 @@ def states_list():
 
     states = storage.all(State).values()
     sorted_states = sorted(states, key=lambda x: x.name)
-
 
     return render_template("7-states_list.html", states=sorted_states)
 
