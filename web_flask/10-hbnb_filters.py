@@ -26,6 +26,8 @@ Note: You must use the option strict_slashes=False in your route definition
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.amenity import Amenity
+from models.city import City
 from flask import abort
 
 app = Flask(__name__)
@@ -35,6 +37,7 @@ app = Flask(__name__)
 def hbnb_filters():
     """Displays the main HBnB filters HTML page."""
     states = storage.all("State")
+    cities = storage.all("City")
     amenities = storage.all("Amenity")
     return render_template("10-hbnb_filters.html",
                            states=states, amenities=amenities)
