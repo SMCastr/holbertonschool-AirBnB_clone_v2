@@ -23,9 +23,10 @@ Routes:
 Note: You must use the option strict_slashes=False in your route definition
 """
 
+from flask import Flask, render_template
 from models import storage
-from flask import Flask
-from flask import render_template
+from models.state import State
+from flask import abort
 
 app = Flask(__name__)
 
