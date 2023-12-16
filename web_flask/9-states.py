@@ -5,8 +5,7 @@ Script that starts a Flask web application.
 The web application must be listening on:
     - Address: 0.0.0.0
     - Port: 5000
-Use storage for fetching data from the storage engine
-(FileStorage or DBStorage)
+Use storage for fetching data from the storage engine (FileStorage or DBStorage)
 => from models import storage and storage.all(...)
 To load all cities of a State:
     If your storage engine is DBStorage, you must use cities relationship
@@ -43,6 +42,7 @@ app = Flask(__name__)
 @app.route("/states", strict_slashes=False)
 def states():
     """Displays an HTML page with a list of all States.
+
     States are sorted by name.
     """
     states = storage.all(State).values()
@@ -53,11 +53,10 @@ def states():
 def states_id(id):
     """Displays an HTML page with info about <id>, if it exists."""
     state = storage.get(State, id)
+    cities = []
     if state:
         cities = sorted(state.cities, key=lambda city: city.name)
-        return render_template("9-states.html", state=state, cities=cities)
-    else:
-        return render_template("9-states.html", not_found=True)
+    return render_template("9-states.html", state=state, cities=cities)
 
 
 @app.teardown_appcontext
@@ -66,5 +65,4 @@ def teardown(exc):
     storage.close()
 
 if __name__ == "__main__":
-
     app.run(host="0.0.0.0", port=5000)
