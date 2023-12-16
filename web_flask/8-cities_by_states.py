@@ -4,7 +4,9 @@
 The web application must be listening on:
     - Address: 0.0.0.0
     - Port: 5000
-Use storage for fetching data from the storage engine (FileStorage or DBStorage) => from models import storage and storage.all(...)
+Use storage for fetching data from the storage engine
+(FileStorage or DBStorage)
+=> from models import storage and storage.all(...)
 After each request you must remove the current SQLAlchemy Session:
     - Declare a method to handle @app.teardown_appcontext
     - Call in this method storage.close()
