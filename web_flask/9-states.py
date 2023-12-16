@@ -5,7 +5,8 @@ Script that starts a Flask web application.
 The web application must be listening on:
     - Address: 0.0.0.0
     - Port: 5000
-Use storage for fetching data from the storage engine (FileStorage or DBStorage)
+Use storage for fetching data from the storage engine
+(FileStorage or DBStorage)
 => from models import storage and storage.all(...)
 To load all cities of a State:
     If your storage engine is DBStorage, you must use cities relationship
