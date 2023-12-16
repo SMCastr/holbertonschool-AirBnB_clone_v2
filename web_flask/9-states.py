@@ -11,7 +11,7 @@ Use storage for fetching data from the storage engine
 To load all cities of a State:
     If your storage engine is DBStorage, you must use cities relationship
     Otherwise, use the public getter method cities
-After each request you must remove the current SQLAlchemy Session:
+After each request, you must remove the current SQLAlchemy Session:
     Declare a method to handle @app.teardown_appcontext
     Call in this method storage.close()
 Routes:
@@ -32,10 +32,9 @@ Routes:
 Note: You must use the option strict_slashes=False in your route definition
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 from models import storage
 from models.state import State
-from models.city import City
 
 app = Flask(__name__)
 
@@ -54,15 +53,18 @@ def list_states():
 def display_state(id):
     """Displays an HTML page with info about <id>, if it exists."""
     state = storage.get(State, id)
-    cities = sorted(state.cities, key=lambda city: city.name) if state else []
-    return render_template("9-states.html", state=state, cities=cities)
+    if state:
+        cities = sorted(state.cities, key=lambda city: city.name)
+        return render_template("9-states.html", state=state, cities=cities)
+    else:
+        abort(404)
 
 
 @app.teardown_appcontext
-def teardown():
+def teardown(exception):
     """Remove the current SQLAlchemy session."""
     storage.close()
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
