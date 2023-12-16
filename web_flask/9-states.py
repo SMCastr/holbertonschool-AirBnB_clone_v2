@@ -5,13 +5,12 @@ Script that starts a Flask web application.
 The web application must be listening on:
     - Address: 0.0.0.0
     - Port: 5000
-Use storage for fetching data from the storage engine
-(FileStorage or DBStorage)
+Use storage for fetching data from the storage engine (FileStorage or DBStorage)
 => from models import storage and storage.all(...)
 To load all cities of a State:
     If your storage engine is DBStorage, you must use cities relationship
     Otherwise, use the public getter method cities
-After each request, you must remove the current SQLAlchemy Session:
+After each request you must remove the current SQLAlchemy Session:
     Declare a method to handle @app.teardown_appcontext
     Call in this method storage.close()
 Routes:
@@ -41,7 +40,7 @@ app = Flask(__name__)
 
 
 @app.route("/states", strict_slashes=False)
-def states():
+def list_states():
     """Displays an HTML page with a list of all States.
 
     States are sorted by name.
@@ -51,17 +50,15 @@ def states():
 
 
 @app.route("/states/<id>", strict_slashes=False)
-def states_id(id):
+def display_state(id):
     """Displays an HTML page with info about <id>, if it exists."""
     state = storage.get(State, id)
-    cities = []
-    if state:
-        cities = sorted(state.cities, key=lambda city: city.name)
+    cities = sorted(state.cities, key=lambda city: city.name) if state else []
     return render_template("9-states.html", state=state, cities=cities)
 
 
 @app.teardown_appcontext
-def teardown(exc):
+def teardown():
     """Remove the current SQLAlchemy session."""
     storage.close()
 
