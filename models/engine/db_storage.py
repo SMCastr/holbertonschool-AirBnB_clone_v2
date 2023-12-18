@@ -34,22 +34,19 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Query on the curret database session
+        """Query on the current database session
         all objects of the given class."""
 
         if cls is None:
-            objs = self.__session.query(State).all()
-            objs.extend(self.__session.query(City).all())
-            objs.extend(self.__session.query(User).all())
-            objs.extend(self.__session.query(Place).all())
-            objs.extend(self.__session.query(Review).all())
-            objs.extend(self.__session.query(Amenity).all())
+            classes = [State, City, User, Place, Review, Amenity]
+            objs = []
+            for c in classes:
+                objs.extend(self.__session.query(c).all())
         else:
             if type(cls) == str:
                 cls = eval(cls)
             objs = self.__session.query(cls)
         return {"{}.{}".format(type(o).__name__, o.id): o for o in objs}
-
     def new(self, obj):
         """Add obj to the current database session."""
         self.__session.add(obj)
