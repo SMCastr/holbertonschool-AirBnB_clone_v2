@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<HTML lang="en">
-    <HEAD>
-        <TITLE>HBNB</TITLE>
-    </HEAD>
-    <BODY>
-    {% if n is even %}
-        <H1>Number: {{ n }} is even</H1>
-    {% else %}
-        <H1>Number: {{ n }} is odd</H1>
-    {% endif %}
-    </BODY>
-</HTML>
+<html lang="en">
+    <head>
+        <title>HBNB</title>
+    </head>
+    <body>
+        {% if parity == "even" %}
+            <h1>Number: {{ number }} is even</h1>
+        {% else %}
+            <h1>Number: {{ number }} is odd</h1>
+        {% endif %}
+    </body>
+</html>
